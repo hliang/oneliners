@@ -139,6 +139,10 @@ Extract every 4th line starting at the second line (extract the sequence from FA
     sed -n '2~4p' file.fq
 
 
+Interleave two FASTQ files.
+    paste read1.fq read2.fq | awk 'BEGIN{FS="\t"} {print $1; if(NR%4==1){r=$2}else{r=r"\n"$2} if(NR%4==0){print r} }' > interleaved.fq
+
+
 
 ## sort, uniq, cut, etc.
 
